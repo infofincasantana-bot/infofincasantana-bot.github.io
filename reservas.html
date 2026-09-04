@@ -1,0 +1,2764 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reservas | Finca Santana</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f5f0e6;
+    color: #3f382d;
+}
+
+header {
+    background:
+        linear-gradient(rgba(45,37,27,.72), rgba(45,37,27,.72)),
+        url("img/finca.jpg") center/cover;
+
+    min-height: 330px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    color: #e5cf91;
+    font-size: 58px;
+    letter-spacing: 3px;
+    margin: 0 0 10px;
+}
+
+header p {
+    color: #f7f1e5;
+    font-size: 21px;
+    margin: 0;
+}
+
+.container {
+    max-width: 1050px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background: #fffdf8;
+    border: 1px solid #d6c7a5;
+    border-radius: 12px;
+    padding: 35px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+}
+
+h2 {
+    color: #75603b;
+    font-size: 30px;
+    border-bottom: 1px solid #d6c7a5;
+    padding-bottom: 12px;
+}
+
+h3 {
+    color: #75603b;
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #cdbf9f;
+    border-radius: 7px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+
+/* =========================
+   CALENDARIO
+   ========================= */
+
+#calendario {
+    background: #fffdf8;
+    border: 1px solid #d6c7a5;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.calendario-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.calendario-cabecera button {
+    width: auto;
+    margin: 0;
+    padding: 8px 14px;
+    font-size: 16px;
+}
+
+.calendario-mes {
+    font-size: 21px;
+    font-weight: bold;
+    color: #75603b;
+}
+
+.calendario-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.dia-semana {
+    text-align: center;
+    font-weight: bold;
+    color: #75603b;
+    padding: 8px 0;
+}
+
+.dia {
+    border: 1px solid #ded3bd;
+    background: #fff;
+    color: #3f382d;
+    padding: 10px 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.dia:hover {
+    background: #f1ead9;
+}
+
+.dia.especial {
+    background: #ead7a3;
+    border-color: #a58a52;
+    font-weight: bold;
+}
+
+.dia.entrada, 
+.dia.salida {
+    background-color: #5c4728 !important; /* Ajusta aquí tu tono de marrón oscuro exacto */
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+.dia.en-rango {
+    background-color: #f2ebd9 !important; /* Color de fondo para los días intermedios del rango */
+    color: #5c4728 !important;
+    opacity: 1 !important;
+}
+
+.dia.no-disponible {
+    background: #ddd;
+    color: #999;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.dia.otro-mes {
+    background: #faf6ef;
+    color: #a89f91;
+    border-color: #e8e1d5;
+}
+
+
+.leyenda-calendario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+.leyenda-calendario span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.leyenda-calendario i {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.leyenda-calendario .disponible {
+    background: white;
+    border: 1px solid #cdbf9f;
+}
+
+.leyenda-calendario .especial {
+    background: #ead7a3;
+}
+
+.leyenda-calendario .entrada {
+    background: #6f5b37;
+}
+
+.leyenda-calendario .salida {
+    background: #d8c99f;
+}
+
+.leyenda-calendario .rango {
+    background: #d8c99f;
+}
+
+
+/* =========================
+   FECHAS RESERVA
+   ========================= */
+
+.fechas-reserva {
+    background: #f1ead9;
+    border-left: 5px solid #a58a52;
+    padding: 18px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.fechas-reserva strong {
+    color: #6d5630;
+}
+
+
+/* =========================
+   PRECIOS
+   ========================= */
+
+.price-box {
+    background: #f1ead9;
+    border-left: 5px solid #a58a52;
+    padding: 20px;
+    margin-top: 25px;
+}
+
+.price-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    gap: 15px;
+}
+
+.total {
+    font-size: 25px;
+    font-weight: bold;
+    color: #6d5630;
+    border-top: 1px solid #cdbf9f;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+
+.deposit {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   INFORMACIÓN
+   ========================= */
+
+.info {
+    background: #f8f3e8;
+    padding: 18px;
+    border-radius: 8px;
+    line-height: 1.7;
+}
+
+.warning {
+    background: #f3e5d7;
+    border-left: 5px solid #9b6545;
+    padding: 18px;
+    margin-top: 20px;
+}
+
+
+/* =========================
+   CHECKBOX
+   ========================= */
+
+.checkbox {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.checkbox input {
+    width: auto;
+    margin-top: 5px;
+}
+
+
+/* =========================
+   CATERING
+   ========================= */
+
+.catering {
+    display: none;
+    margin-top: 20px;
+}
+
+.dias-catering {
+    background: #f8f3e8;
+    border: 1px solid #d6c7a5;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.dia-catering {
+    display: grid;
+    grid-template-columns: 30px 1fr 280px;
+    align-items: center;
+    gap: 12px;
+
+    padding: 15px;
+    margin-bottom: 10px;
+
+    background: white;
+    border: 1px solid #ded3bd;
+    border-radius: 7px;
+
+    transition: .2s;
+}
+
+.dia-catering input {
+    width: auto;
+    margin: 0;
+}
+
+.dia-catering label {
+    margin: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.dia-catering.seleccionado {
+    background: #ead7a3;
+    border-color: #a58a52;
+}
+
+.precio-catering-dia {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+}
+
+.precio-catering-dia:disabled {
+    background: #eeeeee;
+    color: #888;
+}
+
+
+/* =========================
+   RESUMEN CATERING
+   ========================= */
+
+.resumen-catering-detalle {
+    margin-top: 20px;
+    background: #f8f3e8;
+    border: 1px solid #d6c7a5;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.linea-catering-resumen {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 5px;
+    border-bottom: 1px solid #ded3bd;
+}
+
+.linea-catering-resumen:last-child {
+    border-bottom: none;
+}
+
+.linea-catering-resumen strong {
+    color: #6d5630;
+}
+
+
+/* =========================
+   RESULTADO
+   ========================= */
+
+.result {
+    display: none;
+    background: #eee5d1;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+
+/* =========================
+   BOTÓN
+   ========================= */
+
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 17px;
+    border: none;
+    border-radius: 8px;
+    background: #8b7548;
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #6f5b37;
+}
+
+.calendario-cabecera button {
+    background: #8b7548;
+}
+
+.calendario-cabecera button:hover {
+    background: #6f5b37;
+}
+
+
+/* =========================
+   PIE
+   ========================= */
+
+footer {
+    text-align: center;
+    background: #40372b;
+    color: #eee5d1;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+
+/* =========================
+   MÓVIL
+   ========================= */
+
+@media (max-width: 700px) {
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 34px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .calendario-dias {
+        gap: 3px;
+    }
+
+    .dia {
+        padding: 9px 3px;
+        font-size: 14px;
+    }
+
+    .calendario-mes {
+        font-size: 16px;
+    }
+
+    .leyenda-calendario {
+        font-size: 11px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .price-line {
+        font-size: 14px;
+    }
+
+    .total {
+        font-size: 20px;
+    }
+
+    .dia-catering {
+        grid-template-columns: 30px 1fr;
+    }
+
+    .precio-catering-dia {
+        grid-column: 1 / 3;
+    }
+
+    .linea-catering-resumen {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div>
+
+        <h1>Finca Santana</h1>
+
+        <p>
+            Reservas privadas · Siete Puertas ·
+            Las Palmas de Gran Canaria
+        </p>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- =====================================================
+     RESERVA
+     ===================================================== -->
+
+<div class="card">
+
+    <h2>Reserva de la finca</h2>
+
+    <p>
+        Disfrute de Finca Santana en exclusiva para su
+        estancia, celebración o evento.
+    </p>
+
+    <div class="info">
+
+        <strong>Cómo reservar:</strong><br>
+
+        Seleccione el día de entrada y después el día de
+        salida. Para reservar solamente un día, pulse dos
+        veces sobre el mismo día.
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <div>
+
+            <label>
+                Seleccione las fechas
+            </label>
+
+            <div id="calendario"></div>
+
+            <input
+                type="hidden"
+                id="fechaEntrada"
+            >
+
+            <input
+                type="hidden"
+                id="fechaSalida"
+            >
+
+
+            <div class="fechas-reserva">
+
+                <div>
+                    <strong>Entrada:</strong>
+                    <span id="mostrarEntrada">—</span>
+                </div>
+
+                <div style="margin-top:8px;">
+                    <strong>Salida:</strong>
+                    <span id="mostrarSalida">—</span>
+                </div>
+
+                <div style="margin-top:8px;">
+                    <strong>Días reservados:</strong>
+                    <span id="numeroDias">0</span>
+                </div>
+
+            </div>
+
+
+            <div class="leyenda-calendario">
+
+                <span>
+                    <i class="disponible"></i>
+                    Disponible
+                </span>
+
+                <span>
+                    <i class="especial"></i>
+                    Especial
+                </span>
+
+                <span>
+                    <i class="entrada"></i>
+                    Entrada
+                </span>
+
+                <span>
+                    <i class="salida"></i>
+                    Salida
+                </span>
+
+                <span>
+                    <i class="rango"></i>
+                    Días reservados
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <label for="personas">
+                Número de personas
+            </label>
+
+            <input
+                type="number"
+                id="personas"
+                min="1"
+                max="5"
+                value="0"
+                onchange="calcularReserva()"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="price-box">
+
+        <div class="price-line">
+
+            <span>
+                Precio de la finca:
+            </span>
+
+            <strong id="precioFinca">
+                0,00 €
+            </strong>
+
+        </div>
+
+
+        <div class="price-line">
+
+            <span>
+                Días:
+            </span>
+
+            <strong id="mostrarDiasPrecio">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="price-line">
+
+            <span>
+                Precio:
+            </span>
+
+            <strong id="mostrarTemporada">
+                —
+            </strong>
+
+        </div>
+
+
+        <div class="price-line">
+
+            <span>
+                Tipo de fecha:
+            </span>
+
+            <strong id="mostrarTipoFecha">
+                —
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CATERING
+     ===================================================== -->
+
+<div class="card">
+
+    <h2>Catering</h2>
+
+    <p>
+
+        Puede añadir a su reserva un servicio de catering
+        externo proporcionado por
+        <strong>Catering Nicolette Events</strong>.
+
+    </p>
+
+
+    <div class="checkbox">
+
+        <input
+            type="checkbox"
+            id="activarCatering"
+            onchange="mostrarCatering()"
+        >
+
+        <label for="activarCatering">
+
+            Deseo añadir catering a mi reserva
+
+        </label>
+
+    </div>
+
+
+    <div class="catering" id="catering">
+
+
+        <label>
+            Seleccione los días y el precio del catering
+        </label>
+
+
+        <div
+            id="diasCatering"
+            class="dias-catering"
+        >
+
+            <p>
+                Primero seleccione las fechas de la finca.
+            </p>
+
+        </div>
+
+
+        <div class="info">
+
+            <strong>Importante:</strong><br>
+
+            Cada día puede tener un servicio y un precio
+            independiente. Seleccione el catering únicamente
+            para los días que desee.
+
+        </div>
+
+
+        <div
+            id="resumenCateringDetalle"
+            class="resumen-catering-detalle"
+        >
+
+            <strong>
+                Detalle del catering
+            </strong>
+
+            <p>
+                No hay días de catering seleccionados.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     RESUMEN
+     ===================================================== -->
+
+<div class="card">
+
+    <h2>Resumen de la reserva</h2>
+
+
+    <div class="price-box">
+
+
+        <div class="price-line">
+
+            <span>
+                Finca:
+            </span>
+
+            <strong id="resumenFinca">
+                0,00 €
+            </strong>
+
+        </div>
+
+        <div class="price-line">
+
+            <span>
+                Días de reserva:
+            </span>
+
+            <strong id="resumenDiasFinca">
+                0
+            </strong>
+
+        </div>
+
+        <div class="price-line">
+
+            <span>
+                Catering:
+            </span>
+
+            <strong id="resumenCatering">
+                0,00 €
+            </strong>
+
+        </div>
+
+
+        <div class="price-line">
+
+            <span>
+                Días de catering:
+            </span>
+
+            <strong id="resumenDiasCatering">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="price-line total">
+
+            <span>
+                Importe total:
+            </span>
+
+            <strong id="total">
+                0,00 €
+            </strong>
+
+        </div>
+
+
+        <div class="price-line deposit">
+
+            <span>
+                40 % para confirmar:
+            </span>
+
+            <strong id="pago40">
+                0,00 €
+            </strong>
+
+        </div>
+
+
+        <div class="price-line">
+
+            <span>
+                60 % restante:
+            </span>
+
+            <strong id="pago60">
+                0,00 €
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     DATOS CLIENTE
+     ===================================================== -->
+
+<div class="card">
+
+    <h2>Datos del cliente</h2>
+
+
+    <div class="grid">
+
+
+        <div>
+
+            <label for="nombre">
+                Nombre y apellidos
+            </label>
+
+            <input
+                type="text"
+                id="nombre"
+            >
+
+        </div>
+
+
+        <div>
+
+            <label for="telefono">
+                Teléfono
+            </label>
+
+            <input
+                type="tel"
+                id="telefono"
+            >
+
+        </div>
+
+
+        <div>
+
+            <label for="email">
+                Correo electrónico
+            </label>
+
+            <input
+                type="email"
+                id="email"
+            >
+
+        </div>
+
+
+        <div>
+
+            <label for="comentarios">
+                Comentarios
+            </label>
+
+            <textarea
+                id="comentarios"
+                rows="5"
+            ></textarea>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CONDICIONES
+     ===================================================== -->
+
+<div class="card">
+
+    <h2>Condiciones de reserva</h2>
+
+
+    <div class="info">
+
+        <p>
+
+            <strong>
+                1. Confirmación de reserva
+            </strong><br>
+
+            La reserva solo queda confirmada cuando se recibe
+            el pago del <strong>40 % del importe total</strong>.
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                2. Bloqueo de las fechas
+            </strong><br>
+
+            Una solicitud sin pago no bloquea las fechas.
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                3. Cancelación
+            </strong><br>
+
+            La reserva podrá cancelarse hasta
+            <strong>7 días antes</strong>
+            de la fecha reservada.
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                4. A partir de 7 días
+            </strong><br>
+
+            A partir de ese momento la reserva no podrá
+            cancelarse y el importe abonado no será reembolsable.
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                5. Catering
+            </strong><br>
+
+            El catering también requiere el pago del
+            <strong>40 %</strong>
+            para quedar confirmado.
+
+        </p>
+
+    </div>
+
+
+    <div class="checkbox">
+
+        <input
+            type="checkbox"
+            id="aceptar"
+        >
+
+        <label for="aceptar">
+
+            He leído y acepto las condiciones de reserva.
+
+        </label>
+
+    </div>
+
+
+    <button onclick="solicitarReserva()">
+
+        RESERVAR Y PAGAR EL 40 %
+
+    </button>
+
+
+    <div
+        class="result"
+        id="resultado"
+    ></div>
+
+</div>
+
+
+</div>
+
+
+
+<footer>
+
+    Finca Santana · Siete Puertas ·
+    Las Palmas de Gran Canaria
+
+    <br>
+
+    Reservas privadas y experiencias especiales
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================================
+   FECHAS ESPECIALES
+   ===================================================== */
+
+const fechasEspeciales = [
+
+    "01-01",
+    "01-06",
+    "05-01",
+    "08-15",
+    "09-08",
+    "10-12",
+    "11-01",
+    "12-06",
+    "12-08",
+    "12-24",
+    "12-25",
+    "12-31"
+
+];
+
+
+/* =====================================================
+   SEMANA SANTA
+   ===================================================== */
+
+const semanaSanta = {
+
+    2026: [
+        "2026-03-29",
+        "2026-03-30",
+        "2026-03-31",
+        "2026-04-01",
+        "2026-04-02",
+        "2026-04-03",
+        "2026-04-04",
+        "2026-04-05"
+    ],
+
+    2027: [
+        "2027-03-21",
+        "2027-03-22",
+        "2027-03-23",
+        "2027-03-24",
+        "2027-03-25",
+        "2027-03-26",
+        "2027-03-27",
+        "2027-03-28"
+    ],
+
+    2028: [
+        "2028-04-09",
+        "2028-04-10",
+        "2028-04-11",
+        "2028-04-12",
+        "2028-04-13",
+        "2028-04-14",
+        "2028-04-15",
+        "2028-04-16"
+    ]
+
+};
+
+
+/* =====================================================
+   FECHA ESPECIAL
+   ===================================================== */
+
+function esFechaEspecial(fecha) {
+
+    if (!fecha) return false;
+
+    const fechaObj =
+        new Date(fecha + "T12:00:00");
+
+    const año =
+        fechaObj.getFullYear();
+
+    const mesDia =
+        fecha.substring(5);
+
+
+    if (fechasEspeciales.includes(mesDia)) {
+        return true;
+    }
+
+
+    if (
+        semanaSanta[año] &&
+        semanaSanta[año].includes(fecha)
+    ) {
+        return true;
+    }
+
+
+    return false;
+}
+
+
+/* =====================================================
+   TEMPORADA ALTA
+   ===================================================== */
+
+function esTemporadaAlta(fecha) {
+
+    const fechaObj =
+        new Date(fecha + "T12:00:00");
+
+    const mes =
+        fechaObj.getMonth();
+
+    return [6, 7, 11].includes(mes);
+}
+
+
+/* =====================================================
+   PRECIO FINCA
+   ===================================================== */
+
+function obtenerPrecioFinca(fecha) {
+
+    if (!fecha) {
+        return 0;
+    }
+
+
+    const fechaObj =
+        new Date(fecha + "T12:00:00");
+
+    const dia =
+        fechaObj.getDay();
+
+
+    let precio;
+
+
+    if (esFechaEspecial(fecha)) {
+
+        precio = 595;
+
+    }
+
+    else if (dia >= 1 && dia <= 4) {
+
+        precio = 395;
+
+    }
+
+    else if (dia === 5) {
+
+        precio = 495;
+
+    }
+
+    else if (dia === 6) {
+
+        precio = 595;
+
+    }
+
+    else {
+
+        precio = 495;
+
+    }
+
+
+    if (esTemporadaAlta(fecha)) {
+
+        precio *= 1.10;
+
+    }
+
+
+    return precio;
+}
+
+
+/* =====================================================
+   TIPO FECHA
+   ===================================================== */
+
+function obtenerTipoFecha(fecha) {
+
+    if (!fecha) {
+        return "—";
+    }
+
+
+    if (esFechaEspecial(fecha)) {
+
+        return "Fecha especial";
+
+    }
+
+
+    if (esTemporadaAlta(fecha)) {
+
+        return "Temporada alta (+10 %)";
+
+    }
+
+
+    return "Tarifa normal";
+}
+
+
+/* =====================================================
+   FORMATO FECHA
+   ===================================================== */
+
+function formatoFecha(fecha) {
+
+    const año =
+        fecha.getFullYear();
+
+    const mes =
+        String(
+            fecha.getMonth() + 1
+        ).padStart(2, "0");
+
+    const dia =
+        String(
+            fecha.getDate()
+        ).padStart(2, "0");
+
+
+    return `${año}-${mes}-${dia}`;
+}
+
+
+/* =====================================================
+   FECHA LEGIBLE
+   ===================================================== */
+
+function fechaLegible(fecha, esSalida = false) {
+
+    if (!fecha) {
+        return "—";
+    }
+
+    const fechaObj =
+        new Date(fecha + "T12:00:00");
+
+    // Si es la salida, añadimos un día
+    if (esSalida) {
+        fechaObj.setDate(
+            fechaObj.getDate() + 1
+        );
+    }
+
+    return fechaObj.toLocaleDateString(
+        "es-ES",
+        {
+            weekday: "long",
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        }
+    ) + " — 12:00";
+
+}
+
+
+/* =====================================================
+   VARIABLES
+   ===================================================== */
+
+let fechaCalendario = new Date();
+
+
+/*
+   Guardamos aquí los precios individuales
+   del catering.
+
+   Ejemplo:
+
+   {
+      "2026-08-30": 900,
+      "2026-08-31": 1700
+   }
+*/
+
+let preciosCatering = {};
+
+
+/* =====================================================
+   CREAR CALENDARIO (DÍAS ADYACENTES CON FONDO CLARO)
+   ===================================================== */
+
+function crearCalendario() {
+    const calendario = document.getElementById("calendario");
+
+    const año = fechaCalendario.getFullYear();
+    const mes = fechaCalendario.getMonth();
+
+    const nombresMeses = [
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+
+    let primerDiaIndex = new Date(año, mes, 1).getDay();
+    primerDiaIndex = primerDiaIndex === 0 ? 6 : primerDiaIndex - 1;
+
+    const diasMesActual = new Date(año, mes + 1, 0).getDate();
+    const diasMesAnterior = new Date(año, mes, 0).getDate();
+
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
+    const entrada = document.getElementById("fechaEntrada").value;
+    const salida = document.getElementById("fechaSalida").value;
+
+    let html = `
+        <div class="calendario-cabecera">
+            <button type="button" onclick="mesAnterior()">◀</button>
+            <div class="calendario-mes">${nombresMeses[mes]} ${año}</div>
+            <button type="button" onclick="mesSiguiente()">▶</button>
+        </div>
+        <div class="calendario-dias">
+            <div class="dia-semana">L</div>
+            <div class="dia-semana">M</div>
+            <div class="dia-semana">X</div>
+            <div class="dia-semana">J</div>
+            <div class="dia-semana">V</div>
+            <div class="dia-semana">S</div>
+            <div class="dia-semana">D</div>
+    `;
+
+    // 1. DÍAS DEL MES ANTERIOR (Relleno inicial)
+    for (let i = primerDiaIndex - 1; i >= 0; i--) {
+        const diaNum = diasMesAnterior - i;
+        const fechaAnt = new Date(año, mes - 1, diaNum);
+        const fechaTexto = formatoFecha(fechaAnt);
+        const especial = esFechaEspecial(fechaTexto);
+        const pasado = fechaAnt < hoy;
+
+        let clase = "dia";
+        if (pasado) {
+            clase += " no-disponible";
+        } else {
+            clase += " otro-mes"; // Fondo claro para los días de otro mes
+            if (especial) clase += " especial";
+        }
+
+        if (entrada && salida && fechaTexto >= entrada && fechaTexto <= salida) clase += " en-rango";
+        if (fechaTexto === entrada) clase += " entrada";
+        if (fechaTexto === salida) clase += " salida";
+
+        html += `
+            <button
+                type="button"
+                class="${clase}"
+                ${pasado ? "disabled" : ""}
+                onclick="seleccionarFecha('${fechaTexto}')"
+            >
+                ${diaNum}
+            </button>
+        `;
+    }
+
+    // 2. DÍAS DEL MES ACTUAL
+    for (let dia = 1; dia <= diasMesActual; dia++) {
+        const fecha = new Date(año, mes, dia);
+        const fechaTexto = formatoFecha(fecha);
+        const especial = esFechaEspecial(fechaTexto);
+        const pasado = fecha < hoy;
+
+        let clase = "dia";
+        if (pasado) {
+            clase += " no-disponible";
+        } else {
+            if (especial) clase += " especial";
+        }
+
+        if (entrada && salida && fechaTexto >= entrada && fechaTexto <= salida) clase += " en-rango";
+        if (fechaTexto === entrada) clase += " entrada";
+        if (fechaTexto === salida) clase += " salida";
+
+        html += `
+            <button
+                type="button"
+                class="${clase}"
+                ${pasado ? "disabled" : ""}
+                onclick="seleccionarFecha('${fechaTexto}')"
+            >
+                ${dia}
+            </button>
+        `;
+    }
+
+    // 3. DÍAS DEL MES SIGUIENTE (Relleno final)
+    const totalCeldasActuales = primerDiaIndex + diasMesActual;
+    const diasRestantes = totalCeldasActuales % 7 === 0 ? 0 : 7 - (totalCeldasActuales % 7);
+
+    for (let dia = 1; dia <= diasRestantes; dia++) {
+        const fechaSig = new Date(año, mes + 1, dia);
+        const fechaTexto = formatoFecha(fechaSig);
+        const especial = esFechaEspecial(fechaTexto);
+        const pasado = fechaSig < hoy;
+
+        let clase = "dia";
+        if (pasado) {
+            clase += " no-disponible";
+        } else {
+            clase += " otro-mes"; // Fondo claro para los días de otro mes
+            if (especial) clase += " especial";
+        }
+
+        if (entrada && salida && fechaTexto >= entrada && fechaTexto <= salida) clase += " en-rango";
+        if (fechaTexto === entrada) clase += " entrada";
+        if (fechaTexto === salida) clase += " salida";
+
+        html += `
+            <button
+                type="button"
+                class="${clase}"
+                ${pasado ? "disabled" : ""}
+                onclick="seleccionarFecha('${fechaTexto}')"
+            >
+                ${dia}
+            </button>
+        `;
+    }
+
+    html += `</div>`;
+    calendario.innerHTML = html;
+}
+
+/* =====================================================
+   SELECCIONAR FECHA
+   ===================================================== */
+
+function seleccionarFecha(fecha) {
+
+    const entrada =
+        document.getElementById(
+            "fechaEntrada"
+        );
+
+
+    const salida =
+        document.getElementById(
+            "fechaSalida"
+        );
+
+
+    /*
+       PRIMER CLICK:
+       nueva entrada.
+    */
+
+    if (
+        !entrada.value ||
+        (entrada.value && salida.value)
+    ) {
+
+        entrada.value = fecha;
+        salida.value = "";
+
+        /*
+           Cuando se empieza una nueva reserva
+           eliminamos los días de catering anteriores.
+        */
+
+        preciosCatering = {};
+
+    }
+
+    else {
+
+        /*
+           Si selecciona una fecha anterior,
+           se convierte en entrada.
+        */
+
+        if (fecha < entrada.value) {
+
+            salida.value =
+                entrada.value;
+
+            entrada.value =
+                fecha;
+
+        }
+
+        else {
+
+            salida.value =
+                fecha;
+
+        }
+
+    }
+
+
+    actualizarFechas();
+
+    crearCalendario();
+
+    crearDiasCatering();
+
+    calcularReserva();
+}
+
+
+/* =====================================================
+   ACTUALIZAR FECHAS
+   ===================================================== */
+
+function actualizarFechas() {
+
+    const entrada =
+        document.getElementById(
+            "fechaEntrada"
+        ).value;
+
+
+    const salida =
+        document.getElementById(
+            "fechaSalida"
+        ).value;
+
+
+    document.getElementById(
+        "mostrarEntrada"
+    ).textContent =
+        fechaLegible(
+            entrada,
+            false
+        );
+
+
+    document.getElementById(
+        "mostrarSalida"
+    ).textContent =
+        fechaLegible(
+            salida,
+            true
+        );
+
+
+    let dias = 0;
+
+
+    if (entrada && salida) {
+
+        const inicio =
+            new Date(
+                entrada + "T12:00:00"
+            );
+
+
+        const fin =
+            new Date(
+                salida + "T12:00:00"
+            );
+
+
+        dias =
+            Math.round(
+                (fin - inicio)
+                /
+                (1000 * 60 * 60 * 24)
+            ) + 1;
+
+    }
+
+    else if (entrada) {
+
+        dias = 1;
+
+    }
+
+
+    document.getElementById(
+        "numeroDias"
+    ).textContent = dias;
+
+
+    document.getElementById(
+        "mostrarDiasPrecio"
+    ).textContent = dias;
+
+    document.getElementById(
+        "resumenDiasFinca"
+    ).textContent = dias;
+
+}
+
+
+/* =====================================================
+   OPCIONES DE CATERING
+   ===================================================== */
+
+function opcionesCatering() {
+
+    return `
+
+        <option value="0">
+            Seleccionar precio
+        </option>
+
+        <option value="900">
+            10 personas — 900 €
+        </option>
+
+        <option value="1320">
+            15 personas — 1.320 €
+        </option>
+
+        <option value="1700">
+            20 personas — 1.700 €
+        </option>
+
+        <option value="2050">
+            25 personas — 2.050 €
+        </option>
+
+        <option value="2400">
+            30 personas — 2.400 €
+        </option>
+
+    `;
+}
+
+
+/* =====================================================
+   CREAR DÍAS DE CATERING
+   ===================================================== */
+
+function crearDiasCatering() {
+
+    const contenedor =
+        document.getElementById(
+            "diasCatering"
+        );
+
+
+    if (!contenedor) {
+        return;
+    }
+
+
+    const entrada =
+        document.getElementById(
+            "fechaEntrada"
+        ).value;
+
+
+    const salida =
+        document.getElementById(
+            "fechaSalida"
+        ).value;
+
+
+    if (!entrada) {
+
+        contenedor.innerHTML = `
+
+            <p>
+                Primero seleccione la fecha de entrada.
+            </p>
+
+        `;
+
+        return;
+    }
+
+
+    const fechaFinal =
+        salida || entrada;
+
+
+    let inicio =
+        new Date(
+            entrada + "T12:00:00"
+        );
+
+
+    const fin =
+        new Date(
+            fechaFinal + "T12:00:00"
+        );
+
+
+    let html = "";
+
+
+    while (inicio <= fin) {
+
+        const fecha =
+            formatoFecha(inicio);
+
+
+        const texto =
+            inicio.toLocaleDateString(
+                "es-ES",
+                {
+                    weekday: "long",
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                }
+            );
+
+
+        const precio =
+            preciosCatering[fecha] || 0;
+
+
+        const marcado =
+            precio > 0;
+
+
+        html += `
+
+            <div
+                class="dia-catering
+                ${marcado ? "seleccionado" : ""}"
+            >
+
+                <input
+                    type="checkbox"
+                    id="catering-${fecha}"
+                    value="${fecha}"
+                    ${marcado ? "checked" : ""}
+                    onchange="cambiarDiaCatering(this)"
+                >
+
+
+                <label
+                    for="catering-${fecha}"
+                >
+                    ${texto}
+                </label>
+
+
+                <select
+                    class="precio-catering-dia"
+                    id="precio-${fecha}"
+                    ${!marcado ? "disabled" : ""}
+                    onchange="cambiarPrecioCatering('${fecha}', this.value)"
+                >
+
+                    ${opcionesCatering()}
+
+                </select>
+
+            </div>
+
+        `;
+
+
+        inicio.setDate(
+            inicio.getDate() + 1
+        );
+
+    }
+
+
+    contenedor.innerHTML = html;
+
+
+    /*
+       Restaurar los precios después
+       de crear los selectores.
+    */
+
+    Object.keys(preciosCatering).forEach(
+        fecha => {
+
+            const select =
+                document.getElementById(
+                    "precio-" + fecha
+                );
+
+
+            if (select) {
+
+                select.value =
+                    preciosCatering[fecha];
+
+            }
+
+        }
+    );
+
+
+    actualizarDetalleCatering();
+}
+
+
+/* =====================================================
+   CAMBIAR DÍA CATERING
+   ===================================================== */
+
+function cambiarDiaCatering(checkbox) {
+
+    const fecha =
+        checkbox.value;
+
+
+    const contenedor =
+        checkbox.parentElement;
+
+
+    const select =
+        document.getElementById(
+            "precio-" + fecha
+        );
+
+
+    if (checkbox.checked) {
+
+        contenedor.classList.add(
+            "seleccionado"
+        );
+
+
+        select.disabled = false;
+
+
+        /*
+           Precio inicial:
+           0 hasta que el cliente seleccione
+           una opción.
+        */
+
+        if (!preciosCatering[fecha]) {
+
+            preciosCatering[fecha] = 0;
+
+        }
+
+    }
+
+    else {
+
+        contenedor.classList.remove(
+            "seleccionado"
+        );
+
+
+        select.disabled = true;
+
+
+        delete preciosCatering[fecha];
+
+        select.value = "0";
+
+    }
+
+
+    actualizarDetalleCatering();
+
+    calcularReserva();
+}
+
+
+/* =====================================================
+   CAMBIAR PRECIO DE UN DÍA
+   ===================================================== */
+
+function cambiarPrecioCatering(
+    fecha,
+    precio
+) {
+
+    precio =
+        parseFloat(precio) || 0;
+
+
+    if (precio > 0) {
+
+        preciosCatering[fecha] =
+            precio;
+
+    }
+
+    else {
+
+        delete preciosCatering[fecha];
+
+    }
+
+
+    actualizarDetalleCatering();
+
+    calcularReserva();
+}
+
+
+/* =====================================================
+   DETALLE DE CATERING
+   ===================================================== */
+
+function actualizarDetalleCatering() {
+
+    const contenedor =
+        document.getElementById(
+            "resumenCateringDetalle"
+        );
+
+
+    if (!contenedor) {
+        return;
+    }
+
+
+    const fechas =
+        Object.keys(
+            preciosCatering
+        )
+        .filter(
+            fecha =>
+                preciosCatering[fecha] > 0
+        )
+        .sort();
+
+
+    if (fechas.length === 0) {
+
+        contenedor.innerHTML = `
+
+            <strong>
+                Detalle del catering
+            </strong>
+
+            <p>
+                No hay días de catering seleccionados.
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+
+    let html = `
+
+        <strong>
+            Detalle del catering
+        </strong>
+
+    `;
+
+
+    let total = 0;
+
+
+    fechas.forEach(
+        fecha => {
+
+            const precio =
+                preciosCatering[fecha];
+
+
+            total += precio;
+
+
+            html += `
+
+                <div
+                    class="linea-catering-resumen"
+                >
+
+                    <span>
+                        ${fechaLegible(fecha)}
+                    </span>
+
+                    <strong>
+                        ${precio.toFixed(2)} €
+                    </strong>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+    html += `
+
+        <div
+            class="linea-catering-resumen"
+            style="
+                border-top:2px solid #a58a52;
+                margin-top:10px;
+                padding-top:15px;
+            "
+        >
+
+            <strong>
+                Total catering
+            </strong>
+
+            <strong>
+                ${total.toFixed(2)} €
+            </strong>
+
+        </div>
+
+    `;
+
+
+    contenedor.innerHTML =
+        html;
+}
+
+
+/* =====================================================
+   MOSTRAR CATERING
+   ===================================================== */
+
+function mostrarCatering() {
+
+    const activar =
+        document.getElementById(
+            "activarCatering"
+        ).checked;
+
+
+    const catering =
+        document.getElementById(
+            "catering"
+        );
+
+
+    if (activar) {
+
+        catering.style.display =
+            "block";
+
+
+        crearDiasCatering();
+
+    }
+
+    else {
+
+        catering.style.display =
+            "none";
+
+
+        /*
+           Al desactivar catering,
+           eliminamos todos los servicios.
+        */
+
+        preciosCatering = {};
+
+        crearDiasCatering();
+
+    }
+
+
+    calcularReserva();
+}
+
+
+/* =====================================================
+   CALCULAR RESERVA
+   ===================================================== */
+
+function calcularReserva() {
+
+    const entrada =
+        document.getElementById(
+            "fechaEntrada"
+        ).value;
+
+
+    const salida =
+        document.getElementById(
+            "fechaSalida"
+        ).value;
+
+
+    let precioFinca = 0;
+
+    let numeroDias = 0;
+
+
+    /*
+       PRECIO FINCA
+    */
+
+    if (entrada) {
+
+        let inicio =
+            new Date(
+                entrada + "T12:00:00"
+            );
+
+
+        const fin =
+            new Date(
+                (salida || entrada)
+                + "T12:00:00"
+            );
+
+
+        while (inicio <= fin) {
+
+            const fecha =
+                formatoFecha(inicio);
+
+
+            precioFinca +=
+                obtenerPrecioFinca(
+                    fecha
+                );
+
+
+            numeroDias++;
+
+
+            inicio.setDate(
+                inicio.getDate() + 1
+            );
+
+        }
+
+    }
+
+
+    /*
+       CATERING INDIVIDUAL
+    */
+
+    let catering = 0;
+
+    let diasCatering = 0;
+
+
+    if (
+        document.getElementById(
+            "activarCatering"
+        ).checked
+    ) {
+
+        Object.keys(
+            preciosCatering
+        ).forEach(
+            fecha => {
+
+                const precio =
+                    parseFloat(
+                        preciosCatering[fecha]
+                    ) || 0;
+
+
+                if (precio > 0) {
+
+                    catering += precio;
+
+                    diasCatering++;
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /*
+       TOTAL
+    */
+
+    const total =
+        precioFinca +
+        catering;
+
+
+    const pago40 =
+        total * 0.40;
+
+
+    const pago60 =
+        total * 0.60;
+
+
+    /*
+       MOSTRAR
+    */
+
+    document.getElementById(
+        "precioFinca"
+    ).textContent =
+        precioFinca.toFixed(2)
+        + " €";
+
+
+    document.getElementById(
+        "resumenFinca"
+    ).textContent =
+        precioFinca.toFixed(2)
+        + " €";
+
+
+    document.getElementById(
+        "resumenCatering"
+    ).textContent =
+        catering.toFixed(2)
+        + " €";
+
+
+    document.getElementById(
+        "resumenDiasCatering"
+    ).textContent =
+        diasCatering;
+
+
+    document.getElementById(
+        "total"
+    ).textContent =
+        total.toFixed(2)
+        + " €";
+
+
+    document.getElementById(
+        "pago40"
+    ).textContent =
+        pago40.toFixed(2)
+        + " €";
+
+
+    document.getElementById(
+        "pago60"
+    ).textContent =
+        pago60.toFixed(2)
+        + " €";
+
+
+    /*
+       INFORMACIÓN FECHA
+    */
+
+    let tipo = "—";
+
+
+    if (entrada) {
+
+        tipo =
+            obtenerTipoFecha(
+                entrada
+            );
+
+    }
+
+
+    document.getElementById(
+        "mostrarTipoFecha"
+    ).textContent =
+        tipo;
+
+
+    if (entrada && salida) {
+
+        document.getElementById(
+            "mostrarTemporada"
+        ).textContent =
+            "Según cada día";
+
+    }
+
+    else if (entrada) {
+
+        document.getElementById(
+            "mostrarTemporada"
+        ).textContent =
+            esTemporadaAlta(entrada)
+                ? "Temporada alta +10 %"
+                : "Temporada normal";
+
+    }
+
+    else {
+
+        document.getElementById(
+            "mostrarTemporada"
+        ).textContent =
+            "—";
+
+    }
+
+
+    actualizarDetalleCatering();
+}
+
+
+/* =====================================================
+   MES ANTERIOR
+   ===================================================== */
+
+function mesAnterior() {
+
+    fechaCalendario.setMonth(
+        fechaCalendario.getMonth() - 1
+    );
+
+
+    crearCalendario();
+}
+
+
+/* =====================================================
+   MES SIGUIENTE
+   ===================================================== */
+
+function mesSiguiente() {
+
+    fechaCalendario.setMonth(
+        fechaCalendario.getMonth() + 1
+    );
+
+
+    crearCalendario();
+}
+
+
+/* =====================================================
+   SOLICITAR RESERVA
+   ===================================================== */
+
+function solicitarReserva() {
+
+    const entrada =
+        document.getElementById(
+            "fechaEntrada"
+        ).value;
+
+
+    const salida =
+        document.getElementById(
+            "fechaSalida"
+        ).value;
+
+
+    const nombre =
+        document.getElementById(
+            "nombre"
+        ).value.trim();
+
+
+    const email =
+        document.getElementById(
+            "email"
+        ).value.trim();
+
+
+    const telefono =
+        document.getElementById(
+            "telefono"
+        ).value.trim();
+
+
+    const aceptar =
+        document.getElementById(
+            "aceptar"
+        ).checked;
+
+
+    if (!entrada) {
+
+        alert(
+            "Seleccione una fecha de entrada."
+        );
+
+        return;
+
+    }
+
+
+    if (!salida) {
+
+        alert(
+            "Seleccione una fecha de salida. Para reservar un solo día, pulse dos veces sobre el mismo día."
+        );
+
+        return;
+
+    }
+
+
+    if (!nombre) {
+
+        alert(
+            "Introduzca su nombre y apellidos."
+        );
+
+        return;
+
+    }
+
+
+    if (!telefono) {
+
+        alert(
+            "Introduzca su teléfono."
+        );
+
+        return;
+
+    }
+
+
+    if (!email) {
+
+        alert(
+            "Introduzca su correo electrónico."
+        );
+
+        return;
+
+    }
+
+
+    if (!aceptar) {
+
+        alert(
+            "Debe aceptar las condiciones de reserva."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Comprobar que todos los días
+       de catering seleccionados
+       tienen precio.
+    */
+
+    const diasMarcados =
+        Array.from(
+            document.querySelectorAll(
+                "#diasCatering input[type='checkbox']:checked"
+            )
+        );
+
+
+    for (const checkbox of diasMarcados) {
+
+        const fecha =
+            checkbox.value;
+
+
+        if (
+            !preciosCatering[fecha] ||
+            preciosCatering[fecha] <= 0
+        ) {
+
+            alert(
+                "Seleccione el precio del catering para " +
+                fechaLegible(fecha) +
+                "."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    const total =
+        parseFloat(
+            document.getElementById(
+                "total"
+            ).textContent
+            .replace(" €", "")
+        );
+
+
+    const pago40 =
+        total * 0.40;
+
+
+    const resultado =
+        document.getElementById(
+            "resultado"
+        );
+
+
+    /*
+       DETALLE CATERING
+    */
+
+    let detalleCatering = "";
+
+
+    Object.keys(preciosCatering)
+        .sort()
+        .forEach(
+            fecha => {
+
+                const precio =
+                    preciosCatering[fecha];
+
+
+                if (precio > 0) {
+
+                    detalleCatering += `
+
+                        <p>
+                            ${fechaLegible(fecha)}:
+                            <strong>
+                                ${precio.toFixed(2)} €
+                            </strong>
+                        </p>
+
+                    `;
+
+                }
+
+            }
+        );
+
+
+    if (!detalleCatering) {
+
+        detalleCatering =
+            "<p>Sin catering.</p>";
+
+    }
+
+
+    resultado.style.display =
+        "block";
+
+
+    resultado.innerHTML = `
+
+        <h3>
+            Solicitud preparada
+        </h3>
+
+        <p>
+            Gracias,
+            <strong>${nombre}</strong>.
+        </p>
+
+        <p>
+            Entrada:
+            <strong>
+                ${fechaLegible(entrada)}
+            </strong>
+        </p>
+
+        <p>
+            Salida:
+            <strong>
+                ${fechaLegible(salida)}
+            </strong>
+        </p>
+
+        <hr>
+
+        <h3>
+            Catering seleccionado
+        </h3>
+
+        ${detalleCatering}
+
+        <hr>
+
+        <p>
+            Precio de la finca:
+            <strong>
+                ${document.getElementById("resumenFinca").textContent}
+            </strong>
+        </p>
+
+        <p>
+            Catering:
+            <strong>
+                ${document.getElementById("resumenCatering").textContent}
+            </strong>
+        </p>
+
+        <p>
+            Importe total:
+            <strong>
+                ${total.toFixed(2)} €
+            </strong>
+        </p>
+
+        <p>
+            Pago necesario para confirmar:
+            <strong>
+                ${pago40.toFixed(2)} €
+            </strong>
+        </p>
+
+        <p>
+            <strong>
+                La reserva todavía no está confirmada.
+                La fecha quedará bloqueada cuando
+                el pago sea confirmado.
+            </strong>
+        </p>
+
+        <p>
+            En la siguiente fase conectaremos este botón
+            con Stripe para realizar el pago del 40 %.
+        </p>
+
+    `;
+
+}
+
+
+/* =====================================================
+   INICIO
+   ===================================================== */
+
+crearCalendario();
+
+actualizarFechas();
+
+calcularReserva();
+
+</script>
+
+
+</body>
+
+</html>
