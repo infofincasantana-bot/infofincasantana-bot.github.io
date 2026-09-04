@@ -1,0 +1,1465 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nicolette Events para Finca Santana</title>
+<meta name="description" content="Finca Santana · Casa y Cueva 7 Puertas. Arrendamiento temporal de la finca completa para uso exclusivo, con alojamiento incluido hasta 5 personas y opción de catering externo.">
+
+<style>
+:root{
+  --verde:#596247;
+  --verde2:#70795b;
+  --oro:#a88755;
+  --oro2:#c4a66f;
+  --crema:#f5efe3;
+  --marfil:#fffdf8;
+  --piedra:#e8dfd0;
+  --tinta:#3e392f;
+  --suave:#71695d;
+  --linea:#d8ccb8;
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--tinta);
+  background:var(--crema);
+  line-height:1.65;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* =========================
+   MENÚ PC
+   ========================= */
+
+.nav{
+  position:sticky;
+  top:0;
+  z-index:9999;
+  background:rgba(250,247,240,.98);
+  color:var(--tinta);
+  padding:15px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  border-bottom:1px solid var(--linea);
+  box-shadow:0 3px 18px rgba(70,55,35,.06);
+}
+
+.brand{
+  font-size:24px;
+  letter-spacing:.06em;
+  color:#766044;
+}
+
+.brand b{
+  font-style:italic;
+  font-weight:500;
+}
+
+.brand small{
+  display:block;
+  font-family:Arial,sans-serif;
+  font-size:9px;
+  letter-spacing:.20em;
+  color:#9a8058;
+  margin-top:2px;
+}
+
+.navlinks{
+  display:flex;
+  gap:25px;
+  font-family:Arial,sans-serif;
+  font-size:11px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.navlinks a:hover{
+  color:var(--oro);
+}
+
+.btn{
+  display:inline-block;
+  background:var(--oro);
+  color:#fff;
+  padding:12px 23px;
+  border-radius:2px;
+  font-family:Arial,sans-serif;
+  font-size:11px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  box-shadow:0 5px 14px rgba(100,75,40,.12);
+  transition:.25s;
+}
+
+.btn:hover{
+  background:#8e7048;
+  transform:translateY(-1px);
+}
+
+/* =========================
+   HERO
+   ========================= */
+
+.hero{
+  min-height:82vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  color:#fff;
+  background:
+    linear-gradient(rgba(72,78,56,.22),rgba(61,67,47,.42)),
+    url('img/jd1.jpg') center/cover;
+  position:relative;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:24px;
+  border:1px solid rgba(255,247,225,.65);
+  pointer-events:none;
+}
+
+.hero-inner{
+  padding:80px 25px;
+  max-width:950px;
+  position:relative;
+}
+
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.30em;
+  font-family:Arial,sans-serif;
+  font-size:10px;
+}
+
+.hero h1{
+  font-size:clamp(55px,8vw,100px);
+  margin:16px 0 0;
+  line-height:.95;
+  font-weight:400;
+  letter-spacing:.03em;
+  text-shadow:0 3px 20px rgba(0,0,0,.20);
+}
+
+.hero h2{
+  font-size:clamp(25px,4vw,40px);
+  margin:18px 0;
+  font-weight:400;
+  color:#f5e7cb;
+}
+
+.hero p{
+  font-size:19px;
+  max-width:720px;
+  margin:0 auto 30px;
+}
+
+/* =========================
+   SECCIONES
+   ========================= */
+
+.section{
+  max-width:1180px;
+  margin:auto;
+  padding:88px 24px;
+}
+
+.section h2{
+  text-align:center;
+  font-size:43px;
+  font-weight:400;
+  color:#66553e;
+  margin:0 0 12px;
+}
+
+.lead{
+  text-align:center;
+  max-width:780px;
+  margin:0 auto 45px;
+  color:var(--suave);
+}
+
+/* =========================
+   CARACTERÍSTICAS
+   ========================= */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  margin-top:-55px;
+  position:relative;
+  z-index:3;
+  box-shadow:0 12px 35px rgba(65,50,30,.10);
+}
+
+.feature{
+  background:rgba(255,253,248,.98);
+  border:1px solid var(--linea);
+  border-right:0;
+  padding:27px 20px;
+  text-align:center;
+}
+
+.feature:last-child{
+  border-right:1px solid var(--linea);
+}
+
+.feature strong{
+  display:block;
+  font-size:18px;
+  font-weight:400;
+  color:#6f5b40;
+  margin-bottom:7px;
+}
+
+.feature span{
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  color:#71695d;
+}
+
+/* =========================
+   FINCA
+   ========================= */
+
+.about{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.about img{
+  width:100%;
+  height:560px;
+  object-fit:cover;
+  border:9px solid #fffdf8;
+  box-shadow:0 14px 35px rgba(60,45,25,.12);
+}
+
+.about h2{
+  text-align:left;
+  font-size:46px;
+}
+
+.about p{
+  color:#625b50;
+}
+
+.checks{
+  padding:0;
+  list-style:none;
+}
+
+.checks li{
+  margin:12px 0;
+  color:#5d554a;
+}
+
+.checks li:before{
+  content:"✦";
+  color:var(--oro);
+  margin-right:11px;
+}
+
+/* =========================
+   GALERÍA
+   ========================= */
+
+.gallery{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-auto-rows:220px;
+  gap:12px;
+}
+
+.gallery img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border:3px solid #fffdf8;
+}
+
+.gallery .tall{
+  grid-row:span 2;
+}
+
+.gallery .wide{
+  grid-column:span 2;
+}
+
+/* =========================
+   TARJETAS
+   ========================= */
+
+.cardgrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.card{
+  background:#fffdf8;
+  border:1px solid var(--linea);
+  padding:30px;
+  box-shadow:0 5px 20px rgba(60,45,25,.04);
+}
+
+.card h3{
+  margin-top:0;
+  font-size:23px;
+  font-weight:400;
+  color:#6d593e;
+}
+
+.card p{
+  color:#6b6459;
+  font-size:14px;
+}
+
+/* =========================
+   CATERING
+   ========================= */
+
+.menu-wrap{
+  display:grid;
+  grid-template-columns:.75fr 1.25fr;
+  gap:32px;
+  align-items:center;
+}
+
+.menu-wrap img{
+  width:100%;
+  max-height:760px;
+  object-fit:contain;
+  background:#eee5d5;
+  border:8px solid #fffdf8;
+  box-shadow:0 12px 30px rgba(60,45,25,.10);
+}
+
+.note{
+  background:#70795b;
+  color:#fffdf8;
+  padding:36px;
+  border:1px solid #879071;
+  box-shadow:0 12px 28px rgba(60,55,35,.10);
+}
+
+.note h3{
+  margin-top:0;
+  color:#f2dfba;
+  font-weight:400;
+  font-size:27px;
+}
+
+.note .btn{
+  margin-top:12px;
+}
+
+#catering{
+  padding-top:105px;
+  padding-bottom:105px;
+}
+
+#catering .lead{
+  max-width:850px;
+  font-size:18px;
+}
+
+#catering .menu-wrap{
+  grid-template-columns:1fr;
+  gap:38px;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+#catering .menu-wrap img{
+  order:1;
+  width:100%;
+  max-height:none;
+  height:auto;
+  object-fit:contain;
+  background:#eee5d5;
+  border:10px solid #fffdf8;
+  box-shadow:0 18px 45px rgba(60,45,25,.16);
+}
+
+#catering .note{
+  order:2;
+  max-width:850px;
+  width:100%;
+  margin:0 auto;
+  text-align:center;
+  padding:38px 45px;
+  align-self:auto;
+}
+
+#catering .note h3{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+#catering .note p{
+  max-width:700px;
+  margin:10px auto;
+}
+
+#catering .catering-price{
+  margin:22px auto 20px;
+  font-family:Georgia,"Times New Roman",serif;
+  color:#f2dfba;
+  font-size:31px;
+}
+
+#catering .catering-price small{
+  display:block;
+  font-family:Arial,sans-serif;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#fffdf8;
+  opacity:.9;
+  margin-bottom:5px;
+}
+
+#catering .btn{
+  margin-top:5px;
+}
+
+/* =========================
+   PRECIO CATERING
+   ========================= */
+
+.price-option{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  margin:8px 0;
+  font-size:18px;
+}
+
+.price-option strong{
+  font-weight:400;
+}
+
+.price-option span{
+  font-weight:bold;
+}
+
+.price-note{
+  font-family:Arial,sans-serif;
+  font-size:11px !important;
+  color:#fffdf8;
+  opacity:.9;
+}
+
+/* =========================
+   RESERVA
+   ========================= */
+
+.cta{
+  background:
+    linear-gradient(135deg,#dcd0bd,#f3ede2);
+  color:var(--tinta);
+  text-align:center;
+  max-width:none;
+  padding-left:24px;
+  padding-right:24px;
+}
+
+.cta h2{
+  color:#66553e;
+}
+
+.cta p{
+  max-width:720px;
+  margin:0 auto 25px;
+  color:#665f54;
+}
+
+/* =========================
+   CONTACTO
+   ========================= */
+
+.contact{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.contact .box{
+  background:#fffdf8;
+  border:1px solid var(--linea);
+  padding:30px;
+  box-shadow:0 5px 18px rgba(60,45,25,.04);
+}
+
+.contact h3{
+  font-size:24px;
+  font-weight:400;
+  color:#6d593e;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer{
+  background:#d5c8b3;
+  color:#625747;
+  text-align:center;
+  padding:30px 20px;
+  font-size:13px;
+}
+
+/* =========================
+   CARRUSEL CUCHILLERÍA
+   ========================= */
+
+.galeria-cc{
+  width:50%;
+  max-width:550px;
+  min-width:320px;
+  margin:30px auto;
+  text-align:center;
+}
+
+.galeria-cc h1{
+  margin-bottom:15px;
+  color:#6d593e;
+  font-size:24px;
+  font-weight:400;
+  line-height:1.3;
+}
+
+.carrusel-cc{
+  display:flex;
+  align-items:center;
+  width:100%;
+  gap:7px;
+}
+
+.ventana-cc{
+  width:100%;
+  overflow:hidden;
+}
+
+.pista-cc{
+  display:flex;
+  width:100%;
+  transition:transform .5s ease;
+}
+
+.imagen-cc{
+  min-width:100%;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.imagen-cc img{
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  max-height:300px;
+  object-fit:contain;
+  border-radius:8px;
+}
+
+.flecha{
+  flex-shrink:0;
+  width:32px;
+  height:42px;
+  border:none;
+  border-radius:5px;
+  background:rgba(80,65,40,.80);
+  color:#f0d99d;
+  font-size:19px;
+  cursor:pointer;
+}
+
+.flecha:hover{
+  background:rgba(80,65,40,1);
+}
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media(max-width:850px){
+
+  .nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    min-height:125px;
+    padding:8px 10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    gap:7px;
+    z-index:99999;
+  }
+
+  .brand{
+    font-size:17px;
+    line-height:1.1;
+    text-align:center;
+  }
+
+  .brand small{
+    font-size:7px;
+    letter-spacing:.13em;
+  }
+
+  .navlinks{
+    display:flex !important;
+    width:100%;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:5px 14px;
+    font-size:10px;
+    line-height:1.2;
+  }
+
+  .navlinks a{
+    display:block;
+    white-space:nowrap;
+    margin:0;
+    padding:2px 0;
+  }
+
+  .nav > .btn{
+    display:inline-block;
+    padding:6px 13px;
+    font-size:9px;
+    margin:0;
+  }
+
+  body{
+    padding-top:135px;
+  }
+
+  #inicio,
+  #finca,
+  #galeria,
+  #catering,
+  #servicios,
+  #reserva,
+  #contacto{
+    scroll-margin-top:135px;
+  }
+
+  .features{
+    grid-template-columns:1fr 1fr;
+    margin-top:-35px;
+  }
+
+  .feature{
+    border-right:1px solid var(--linea);
+    padding:18px 10px;
+  }
+
+  .feature strong{
+    font-size:15px;
+  }
+
+  .feature span{
+    font-size:10px;
+  }
+
+  .about,
+  .menu-wrap,
+  .contact{
+    grid-template-columns:1fr;
+  }
+
+  .about{
+    gap:30px;
+  }
+
+  .about img{
+    height:400px;
+  }
+
+  .about h2{
+    font-size:36px;
+  }
+
+  .gallery{
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:180px;
+    gap:8px;
+  }
+
+  .gallery .wide{
+    grid-column:span 2;
+  }
+
+  .cardgrid{
+    grid-template-columns:1fr;
+  }
+
+  .section{
+    padding:58px 18px;
+  }
+
+  .hero{
+    min-height:72vh;
+  }
+
+  .hero:before{
+    inset:14px;
+  }
+
+  .hero-inner{
+    padding:60px 18px;
+  }
+
+  .hero h1{
+    font-size:50px;
+  }
+
+  .hero h2{
+    font-size:25px;
+    line-height:1.2;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .section h2{
+    font-size:34px;
+  }
+
+  .lead{
+    font-size:14px;
+  }
+
+  #catering{
+    padding-top:70px;
+    padding-bottom:70px;
+  }
+
+  #catering .lead{
+    font-size:15px;
+  }
+
+  #catering .menu-wrap{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  #catering .menu-wrap img{
+    border-width:6px;
+  }
+
+  #catering .note{
+    padding:30px 22px;
+  }
+
+  #catering .note h3{
+    font-size:25px;
+  }
+
+  #catering .catering-price{
+    font-size:27px;
+  }
+
+  .contact{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+
+  .contact .box{
+    padding:22px;
+  }
+
+  .contact h3{
+    font-size:21px;
+  }
+
+  .galeria-cc{
+    width:85%;
+    min-width:0;
+    margin:20px auto;
+  }
+
+  .galeria-cc h1{
+    font-size:21px;
+  }
+
+  .flecha{
+    width:28px;
+    height:38px;
+    font-size:17px;
+  }
+
+  .imagen-cc img{
+    max-height:225px;
+  }
+}
+
+/* =====================================================
+   MÓVILES PEQUEÑOS
+   ===================================================== */
+
+@media(max-width:520px){
+
+   p{
+    font-size:12px;
+  }
+
+  .nav{
+    min-height:130px;
+  }
+
+  .navlinks{
+    gap:4px 11px;
+    font-size:9px;
+  }
+
+  .brand{
+    font-size:16px;
+  }
+
+  body{
+    padding-top:140px;
+  }
+
+  #inicio,
+  #finca,
+  #galeria,
+  #catering,
+  #servicios,
+  #reserva,
+  #contacto{
+    scroll-margin-top:140px;
+  }
+
+  .features{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .feature strong{
+    font-size:14px;
+  }
+
+  .feature span{
+    font-size:9px;
+  }
+
+  .hero{
+    min-height:72vh;
+  }
+
+  .hero h2{
+    font-size:20px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .hero-inner{
+    padding:45px 15px;
+  }
+
+  .section h2{
+    font-size:18px;
+  }
+
+  .gallery{
+    display:block;
+  }
+
+  .gallery img{
+    width:100%;
+    height:240px;
+    margin-bottom:10px;
+  }
+
+  #catering .note{
+    padding:26px 16px;
+  }
+
+  #catering .catering-price{
+    font-size:25px;
+  }
+
+  .price-option{
+    font-size:16px;
+    gap:10px;
+  }
+
+  .galeria-cc{
+    width:90%;
+  }
+
+  .galeria-cc h1{
+    font-size:16px;
+  }
+
+  .lead{
+    font-size:12px !important;
+  }
+  .checks li{
+    font-size:12px;
+  }
+
+  .cardgrid .card h3 {
+    font-size: 16px;
+  }
+
+  .cardgrid .card p {
+    font-size: 12px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+
+  <a class="brand" href="#inicio">
+    <b>Nicolette Events</b>
+    <small>FINCA SANTANA - CASA Y CUEVA 7 PUERTAS</small>
+  </a>
+
+  <div class="navlinks">
+    <a href="#inicio">Inicio</a>
+    <a href="#finca">La finca</a>
+    <a href="#galeria">Galería</a>
+    <a href="#catering">Catering</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#reserva">Reserva</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+
+  <a class="btn" href="#reserva">Consultar fecha</a>
+
+</nav>
+
+
+<header id="inicio" class="hero">
+
+  <div class="hero-inner">
+
+    <div class="eyebrow">
+      Arrendamiento temporal - uso exclusivo
+    </div>
+
+    <h2>
+      Nicolette Events - Menú de celebraciones y Carta Gourmet especialmente diseñados para
+    </h2>
+
+    <h2>Finca Santana</h2>
+
+    <h2>Casa y Cueva 7 Puertas</h2>
+
+    <p>
+      Un espacio privado en plena naturaleza para celebraciones,
+      reuniones familiares, encuentros de empresa y días especiales.
+    </p>
+
+    <a class="btn" href="finca-santana.html">
+      Descubre la finca
+    </a>
+
+  </div>
+
+</header>
+
+
+<main>
+
+<section class="section" style="padding-top:0">
+
+  <div class="features">
+
+    <div class="feature">
+      <strong>Finca completa</strong>
+      <span>Uso exclusivo para el grupo</span>
+    </div>
+
+    <div class="feature">
+      <strong>Alojamiento incluido</strong>
+      <span>Recomendado hasta 5 personas</span>
+    </div>
+
+    <div class="feature">
+      <strong>Amigos de los animales</strong>
+      <span>Se admiten mascotas</span>
+    </div>
+
+    <div class="feature">
+      <strong>Catering externo</strong>
+      <span>Menú y servicios</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="finca" class="section">
+
+  <div class="about">
+
+    <div>
+
+      <div class="eyebrow">
+        Bienvenidos a Finca Santana
+      </div>
+
+      <h2>
+        Una finca para disfrutarla y saborearla
+      </h2>
+
+      <p>
+        Finca Santana se plantea como un arrendamiento temporal
+        de la finca completa, con privacidad y uso exclusivo durante
+        la estancia.
+      </p>
+
+      <ul class="checks">
+
+        <li>Casa tradicional y espacios exteriores</li>
+
+        <li>Cueva restaurada con zona de barbacoa</li>
+
+        <li>Jardines, terrazas y rincones privados</li>
+
+        <li>Alojamiento incluido recomendado para hasta 5 personas</li>
+
+        <li>Celebraciones privadas</li>
+
+        <li>Se admiten mascotas</li>
+
+        <li>Posibilidad de contratar catering externo</li>
+
+      </ul>
+
+    </div>
+
+    <img
+      src="img/jd2.jpg"
+      alt="Entrada y entorno de Finca Santana"
+    >
+
+  </div>
+
+</section>
+
+
+<section id="galeria" class="section">
+
+  <h2>Finca Santana en imágenes</h2>
+
+  <p class="lead">
+    Descubre una finca de carácter canario donde la tradición y la tranquilidad
+    se encuentran en un entorno único. Disfruta de sus amplias terrazas,
+    sus espacios exteriores, la zona de barbacoa, la singular cueva y un
+    alojamiento acogedor pensado para completar la experiencia.
+  </p>
+
+  <div class="gallery">
+
+    <img
+      class="tall"
+      src="img/cv1.jpg"
+      alt="imagen1"
+    >
+
+    <img
+      src="img/cs2.jpg"
+      alt="imagen2"
+    >
+
+    <img
+      src="img/cs4.jpg"
+      alt="imagen3"
+    >
+
+    <img
+      class="wide"
+      src="img/cs1.jpg"
+      alt="imagen4"
+    >
+
+    <img
+      src="img/cv3.jpg"
+      alt="imagen5"
+    >
+
+    <img
+      src="img/cv4.jpg"
+      alt="imagen6"
+    >
+
+    <img
+      src="img/cs8.jpg"
+      alt="imagen7"
+    >
+
+    <img
+      class="tall"
+      src="img/cs6.jpg"
+      alt="imagen8"
+    >
+
+    <img
+      src="img/jd1.jpg"
+      alt="imagen9"
+    >
+
+    <img
+      src="img/cs3.jpg"
+      alt="imagen10"
+    >
+
+    <img
+      class="wide"
+      src="img/cs5.jpg"
+      alt="imagen11"
+    >
+
+  </div>
+
+</section>
+
+
+<section id="catering" class="section">
+
+  <h2>Catering externo - Carta Boutique Gourmet</h2>
+
+  <p class="lead">
+    Una propuesta gastronómica con alma y esencia canaria especialmente diseñada
+    para acompañar celebraciones y encuentros privados en Finca Santana.
+  </p>
+
+  <div class="menu-wrap">
+
+    <div class="note">
+
+      <h3>
+        Menú de Celebración Nicolette Events - Finca Santana
+      </h3>
+
+      <p>
+        <b>Una propuesta gastronómica con sabor isleño</b>
+      </p>
+
+      <p>
+        Sabores canarios, productos seleccionados y una
+        presentación cuidada para completar una experiencia única
+        de la finca.
+      </p>
+
+      <p>
+        La propuesta es orientativa y puede adaptarse al
+        número de personas, al tipo de celebración y a las
+        necesidades del evento.
+      </p>
+
+      <div class="catering-price">
+
+        <small>Precio para</small>
+
+        <div class="price-option">
+          <strong>10 personas</strong>
+          <span>900 €</span>
+        </div>
+
+        <div class="price-option">
+          <strong>15 personas</strong>
+          <span>1320 €</span>
+        </div>
+
+        <div class="price-option">
+          <strong>20 personas</strong>
+          <span>1.700 €</span>
+        </div>
+
+        <div class="price-option">
+          <strong>25 personas</strong>
+          <span>2.050 €</span>
+        </div>
+
+        <div class="price-option">
+          <strong>30 personas</strong>
+          <span>2.400 €</span>
+        </div>
+
+        <p class="price-note">
+          Propuestas gastronómicas para celebraciones privadas.
+          Consultar disponibilidad y condiciones.
+        </p>
+
+      </div>
+
+      <a class="btn" href="#reserva">
+        CONSULTAR DISPONIBILIDAD
+      </a>
+
+    </div>
+
+
+    <img
+      src="img/catering.png"
+      alt="Propuesta de catering de Nicolette Events · Finca Santana"
+    >
+
+    <img
+      src="img/gourmet.png"
+      alt="Propuesta de carta de Nicolette Events · Finca Santana"
+    >
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CARRUSEL CUCHILLERÍA
+     ========================= -->
+
+<section class="galeria-cc">
+
+  <h1>
+    Nuestra selección de cuchillería canaria, una tradición hecha arte
+    para disfrutarla y regalar
+  </h1>
+
+  <div class="carrusel-cc">
+
+    <button
+      class="flecha izquierda"
+      onclick="moverCC(-1)"
+      aria-label="Imagen anterior"
+    >
+      &#10094;
+    </button>
+
+    <div class="ventana-cc">
+
+      <div class="pista-cc" id="pistaCC">
+
+        <div class="imagen-cc">
+          <img src="img/cc1.jpg" alt="Finca Santana - Imagen 1">
+        </div>
+
+        <div class="imagen-cc">
+          <img src="img/cc2.jpg" alt="Finca Santana - Imagen 2">
+        </div>
+
+        <div class="imagen-cc">
+          <img src="img/cc3.jpg" alt="Finca Santana - Imagen 3">
+        </div>
+
+        <div class="imagen-cc">
+          <img src="img/cc4.jpg" alt="Finca Santana - Imagen 4">
+        </div>
+
+        <div class="imagen-cc">
+          <img src="img/cc5.jpg" alt="Finca Santana - Imagen 5">
+        </div>
+
+        <div class="imagen-cc">
+          <img src="img/cc6.jpg" alt="Finca Santana - Imagen 6">
+        </div>
+
+      </div>
+
+    </div>
+
+    <button
+      class="flecha derecha"
+      onclick="moverCC(1)"
+      aria-label="Imagen siguiente"
+    >
+      &#10095;
+    </button>
+
+  </div>
+
+</section>
+
+
+<section id="servicios" class="section">
+
+  <h2>Opciones para tu celebración</h2>
+
+  <p class="lead">
+    Servicios adicionales mediante proveedores externos,
+    según disponibilidad y necesidades del evento.
+  </p>
+
+  <div class="cardgrid">
+
+    <div class="card">
+      <h3>Catering</h3>
+      <p>
+        Menús, aperitivos, almuerzos y cenas contratados
+        con proveedor externo.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Transporte</h3>
+      <p>
+        Posibilidad de organizar traslado para los invitados.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Decoración</h3>
+      <p>
+        Ambientación y montaje adaptados al tipo de celebración.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Fotografía y vídeo</h3>
+      <p>
+        Servicio externo para conservar el recuerdo de un día inolvidable.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Música</h3>
+      <p>
+        Opciones de ambientación musical según el evento
+        y las condiciones aplicables.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Actividades</h3>
+      <p>
+        Experiencias gastronómicas y propuestas para grupos pequeños.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="reserva" class="section cta">
+
+  <h2>Reserva tu fecha</h2>
+
+  <p>
+    Consulta disponibilidad para el arrendamiento de la finca completa,
+    con alojamiento incluido rececomendado hasta 5 personas a partir de las 12:00 del día contratado hasta las 12:00 del día siguiente y la posibilidad
+    de añadir catering exterior.
+  </p>
+
+  <a class="btn" href="reservas.html">
+    DISPONIBILIDAD Y RESERVAS
+  </a>
+
+</section>
+
+
+<section id="contacto" class="section contact">
+
+  <div class="box">
+
+    <h3>
+      Dirección:
+    </h3>
+
+    <p>
+      Calle Vega de Rio Palma nº30
+    </p>
+
+    <p>
+      Siete Puertas<br>
+      Las Palmas de Gran Canaria
+    </p>
+
+    <p>
+      <b>Finca Santana</b>
+    </p>
+
+  </div>
+
+  <div class="box">
+
+    <h3>Contacto:</h3>
+
+    <p>
+      Email: vipluxuscanarias@gmail.com
+    </p>
+
+    <p>
+      Teléfono: 928
+    </p>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+  © Nicolette Events · Finca Santana · Casa y Cueva 7 Puertas
+</footer>
+
+
+<script>
+
+let indiceCC = 0;
+
+function moverCC(direccion) {
+
+  const pista = document.getElementById("pistaCC");
+  const totalImagenes = 6;
+
+  indiceCC += direccion;
+
+  if (indiceCC < 0) {
+    indiceCC = totalImagenes - 1;
+  }
+
+  if (indiceCC >= totalImagenes) {
+    indiceCC = 0;
+  }
+
+  pista.style.transform =
+    "translateX(-" + (indiceCC * 100) + "%)";
+}
+
+</script>
+
+</body>
+</html>
