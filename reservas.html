@@ -166,15 +166,15 @@ textarea {
     font-weight: bold;
 }
 
-.dia.entrada, 
+.dia.entrada,
 .dia.salida {
-    background-color: #5c4728 !important; /* Ajusta aquí tu tono de marrón oscuro exacto */
+    background-color: #5c4728 !important;
     color: #ffffff !important;
     opacity: 1 !important;
 }
 
 .dia.en-rango {
-    background-color: #f2ebd9 !important; /* Color de fondo para los días intermedios del rango */
+    background-color: #f2ebd9 !important;
     color: #5c4728 !important;
     opacity: 1 !important;
 }
@@ -191,7 +191,6 @@ textarea {
     color: #a89f91;
     border-color: #e8e1d5;
 }
-
 
 .leyenda-calendario {
     display: flex;
@@ -283,6 +282,42 @@ textarea {
 .deposit {
     font-size: 21px;
     font-weight: bold;
+}
+
+
+/* =========================
+   DESGLOSE PAGOS
+   ========================= */
+
+.pago-online {
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 2px solid #a58a52;
+}
+
+.pago-online-titulo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #6d5630;
+    margin-bottom: 8px;
+}
+
+.pago-online-total {
+    font-size: 23px;
+    font-weight: bold;
+    color: #6d5630;
+}
+
+.pago-pendiente {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #cdbf9f;
+}
+
+.pago-pendiente-titulo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6d5630;
 }
 
 
@@ -498,15 +533,7 @@ footer {
 
     .fechas-reserva {
         font-size: 10px;
-        padding: 12px;   /* Opcional: reduce un poco el relleno de la caja */
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
+        padding: 12px;
     }
 
     .card {
@@ -542,12 +569,24 @@ footer {
         font-size: 20px;
     }
 
-    .texto-catering {
-        font-size: 10px;
+    .deposit {
+        font-size: 18px;
     }
 
-    .grid {
-        grid-template-columns: 1fr;
+    .pago-online-titulo {
+        font-size: 17px;
+    }
+
+    .pago-online-total {
+        font-size: 19px;
+    }
+
+    .pago-pendiente-titulo {
+        font-size: 16px;
+    }
+
+    .texto-catering {
+        font-size: 10px;
     }
 
     .dia-catering {
@@ -569,17 +608,9 @@ footer {
         margin-bottom: 12px;
     }
 
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
     .info-catering-nota {
         font-size: 10px;
         line-height: 1.4;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
     }
 
     label {
@@ -587,23 +618,15 @@ footer {
         margin-top: 12px;
     }
 
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
     .result {
-        font-size: 18px;  /* Reduce el tamaño del texto (ajusta a 12px si prefieres) */
-        padding: 15px;    /* Reduce un poco el relleno interno de la caja */
-        line-height: 1.4; /* Hace el interlineado más compacto */
+        font-size: 18px;
+        padding: 15px;
+        line-height: 1.4;
     }
 
     .result p {
         font-size: 12px;
         margin: 5px 0;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
     }
 
 }
@@ -640,11 +663,11 @@ footer {
 
 <div class="card">
 
-    <h2>Reserva de la finca</h2>
+    <h2>Reserva de Finca Santana</h2>
 
     <p class="texto-disfrute">
-        Disfrute de Finca Santana en exclusiva para su
-        estancia, celebración o evento privado.
+        Disfrute de Finca Santana en exclusiva
+        y celebración privada opcional.
     </p>
 
     <div class="info info-instrucciones">
@@ -912,7 +935,7 @@ footer {
         <div class="price-line">
 
             <span>
-                Finca:
+                Finca Santana:
             </span>
 
             <strong id="resumenFinca">
@@ -920,6 +943,7 @@ footer {
             </strong>
 
         </div>
+
 
         <div class="price-line">
 
@@ -933,10 +957,11 @@ footer {
 
         </div>
 
+
         <div class="price-line">
 
             <span>
-                Catering:
+                Catering Nicolette Events:
             </span>
 
             <strong id="resumenCatering">
@@ -972,30 +997,109 @@ footer {
         </div>
 
 
-        <div class="price-line deposit">
+        <!-- =========================
+             PAGO ONLINE 40 %
+             ========================= -->
 
-            <span>
-                40 % para confirmar:
-            </span>
+        <div class="pago-online">
 
-            <strong id="pago40">
-                0,00 €
-            </strong>
+            <div class="pago-online-titulo">
+                Pago de reserva — 40 %
+            </div>
+
+
+            <div class="price-line">
+
+                <span>
+                    Finca Santana — 40 %:
+                </span>
+
+                <strong id="pago40Finca">
+                    0,00 €
+                </strong>
+
+            </div>
+
+
+            <div class="price-line">
+
+                <span>
+                    Nicolette Events — 40 %:
+                </span>
+
+                <strong id="pago40Catering">
+                    0,00 €
+                </strong>
+
+            </div>
+
+
+            <div class="price-line pago-online-total">
+
+                <span>
+                    TOTAL RESERVA:
+                </span>
+
+                <strong id="pago40">
+                    0,00 €
+                </strong>
+
+            </div>
 
         </div>
 
 
-        <div class="price-line">
+        <!-- =========================
+             PAGO PENDIENTE 60 %
+             ========================= -->
 
-            <span>
-                60 % restante:
-            </span>
+        <div class="pago-pendiente">
 
-            <strong id="pago60">
-                0,00 €
-            </strong>
+            <div class="pago-pendiente-titulo">
+                Pendiente de pago — 60 %
+            </div>
+
+
+            <div class="price-line">
+
+                <span>
+                    Finca Santana — 60 %:
+                </span>
+
+                <strong id="pago60Finca">
+                    0,00 €
+                </strong>
+
+            </div>
+
+
+            <div class="price-line">
+
+                <span>
+                    Nicolette Events — 60 %:
+                </span>
+
+                <strong id="pago60Catering">
+                    0,00 €
+                </strong>
+
+            </div>
+
+
+            <div class="price-line">
+
+                <span>
+                    PENDIENTE TOTAL:
+                </span>
+
+                <strong id="pago60">
+                    0,00 €
+                </strong>
+
+            </div>
 
         </div>
+
 
     </div>
 
@@ -1444,7 +1548,6 @@ function fechaLegible(fecha, esSalida = false) {
     const fechaObj =
         new Date(fecha + "T12:00:00");
 
-    // Si es la salida, añadimos un día
     if (esSalida) {
         fechaObj.setDate(
             fechaObj.getDate() + 1
@@ -1470,48 +1573,56 @@ function fechaLegible(fecha, esSalida = false) {
 
 let fechaCalendario = new Date();
 
-
-/*
-   Guardamos aquí los precios individuales
-   del catering.
-
-   Ejemplo:
-
-   {
-      "2026-08-30": 900,
-      "2026-08-31": 1700
-   }
-*/
-
 let preciosCatering = {};
 
 
 /* =====================================================
-   CREAR CALENDARIO (DÍAS ADYACENTES CON FONDO CLARO)
+   CREAR CALENDARIO
    ===================================================== */
 
 function crearCalendario() {
-    const calendario = document.getElementById("calendario");
 
-    const año = fechaCalendario.getFullYear();
-    const mes = fechaCalendario.getMonth();
+    const calendario =
+        document.getElementById("calendario");
+
+    const año =
+        fechaCalendario.getFullYear();
+
+    const mes =
+        fechaCalendario.getMonth();
 
     const nombresMeses = [
         "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
         "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ];
 
-    let primerDiaIndex = new Date(año, mes, 1).getDay();
-    primerDiaIndex = primerDiaIndex === 0 ? 6 : primerDiaIndex - 1;
+    let primerDiaIndex =
+        new Date(año, mes, 1).getDay();
 
-    const diasMesActual = new Date(año, mes + 1, 0).getDate();
-    const diasMesAnterior = new Date(año, mes, 0).getDate();
+    primerDiaIndex =
+        primerDiaIndex === 0
+            ? 6
+            : primerDiaIndex - 1;
+
+    const diasMesActual =
+        new Date(año, mes + 1, 0).getDate();
+
+    const diasMesAnterior =
+        new Date(año, mes, 0).getDate();
 
     const hoy = new Date();
+
     hoy.setHours(0, 0, 0, 0);
 
-    const entrada = document.getElementById("fechaEntrada").value;
-    const salida = document.getElementById("fechaSalida").value;
+    const entrada =
+        document.getElementById(
+            "fechaEntrada"
+        ).value;
+
+    const salida =
+        document.getElementById(
+            "fechaSalida"
+        ).value;
 
     let html = `
         <div class="calendario-cabecera">
@@ -1519,7 +1630,9 @@ function crearCalendario() {
             <div class="calendario-mes">${nombresMeses[mes]} ${año}</div>
             <button type="button" onclick="mesSiguiente()">▶</button>
         </div>
+
         <div class="calendario-dias">
+
             <div class="dia-semana">L</div>
             <div class="dia-semana">M</div>
             <div class="dia-semana">X</div>
@@ -1529,25 +1642,62 @@ function crearCalendario() {
             <div class="dia-semana">D</div>
     `;
 
-    // 1. DÍAS DEL MES ANTERIOR (Relleno inicial)
-    for (let i = primerDiaIndex - 1; i >= 0; i--) {
-        const diaNum = diasMesAnterior - i;
-        const fechaAnt = new Date(año, mes - 1, diaNum);
-        const fechaTexto = formatoFecha(fechaAnt);
-        const especial = esFechaEspecial(fechaTexto);
-        const pasado = fechaAnt < hoy;
+
+    /* MES ANTERIOR */
+
+    for (
+        let i = primerDiaIndex - 1;
+        i >= 0;
+        i--
+    ) {
+
+        const diaNum =
+            diasMesAnterior - i;
+
+        const fechaAnt =
+            new Date(
+                año,
+                mes - 1,
+                diaNum
+            );
+
+        const fechaTexto =
+            formatoFecha(fechaAnt);
+
+        const especial =
+            esFechaEspecial(fechaTexto);
+
+        const pasado =
+            fechaAnt < hoy;
 
         let clase = "dia";
+
         if (pasado) {
+
             clase += " no-disponible";
+
         } else {
-            clase += " otro-mes"; // Fondo claro para los días de otro mes
-            if (especial) clase += " especial";
+
+            clase += " otro-mes";
+
+            if (especial)
+                clase += " especial";
+
         }
 
-        if (entrada && salida && fechaTexto >= entrada && fechaTexto <= salida) clase += " en-rango";
-        if (fechaTexto === entrada) clase += " entrada";
-        if (fechaTexto === salida) clase += " salida";
+        if (
+            entrada &&
+            salida &&
+            fechaTexto >= entrada &&
+            fechaTexto <= salida
+        )
+            clase += " en-rango";
+
+        if (fechaTexto === entrada)
+            clase += " entrada";
+
+        if (fechaTexto === salida)
+            clase += " salida";
 
         html += `
             <button
@@ -1559,25 +1709,59 @@ function crearCalendario() {
                 ${diaNum}
             </button>
         `;
+
     }
 
-    // 2. DÍAS DEL MES ACTUAL
-    for (let dia = 1; dia <= diasMesActual; dia++) {
-        const fecha = new Date(año, mes, dia);
-        const fechaTexto = formatoFecha(fecha);
-        const especial = esFechaEspecial(fechaTexto);
-        const pasado = fecha < hoy;
+
+    /* MES ACTUAL */
+
+    for (
+        let dia = 1;
+        dia <= diasMesActual;
+        dia++
+    ) {
+
+        const fecha =
+            new Date(
+                año,
+                mes,
+                dia
+            );
+
+        const fechaTexto =
+            formatoFecha(fecha);
+
+        const especial =
+            esFechaEspecial(fechaTexto);
+
+        const pasado =
+            fecha < hoy;
 
         let clase = "dia";
+
         if (pasado) {
+
             clase += " no-disponible";
-        } else {
-            if (especial) clase += " especial";
+
+        } else if (especial) {
+
+            clase += " especial";
+
         }
 
-        if (entrada && salida && fechaTexto >= entrada && fechaTexto <= salida) clase += " en-rango";
-        if (fechaTexto === entrada) clase += " entrada";
-        if (fechaTexto === salida) clase += " salida";
+        if (
+            entrada &&
+            salida &&
+            fechaTexto >= entrada &&
+            fechaTexto <= salida
+        )
+            clase += " en-rango";
+
+        if (fechaTexto === entrada)
+            clase += " entrada";
+
+        if (fechaTexto === salida)
+            clase += " salida";
 
         html += `
             <button
@@ -1589,29 +1773,71 @@ function crearCalendario() {
                 ${dia}
             </button>
         `;
+
     }
 
-    // 3. DÍAS DEL MES SIGUIENTE (Relleno final)
-    const totalCeldasActuales = primerDiaIndex + diasMesActual;
-    const diasRestantes = totalCeldasActuales % 7 === 0 ? 0 : 7 - (totalCeldasActuales % 7);
 
-    for (let dia = 1; dia <= diasRestantes; dia++) {
-        const fechaSig = new Date(año, mes + 1, dia);
-        const fechaTexto = formatoFecha(fechaSig);
-        const especial = esFechaEspecial(fechaTexto);
-        const pasado = fechaSig < hoy;
+    /* MES SIGUIENTE */
+
+    const totalCeldasActuales =
+        primerDiaIndex + diasMesActual;
+
+    const diasRestantes =
+        totalCeldasActuales % 7 === 0
+            ? 0
+            : 7 - (totalCeldasActuales % 7);
+
+
+    for (
+        let dia = 1;
+        dia <= diasRestantes;
+        dia++
+    ) {
+
+        const fechaSig =
+            new Date(
+                año,
+                mes + 1,
+                dia
+            );
+
+        const fechaTexto =
+            formatoFecha(fechaSig);
+
+        const especial =
+            esFechaEspecial(fechaTexto);
+
+        const pasado =
+            fechaSig < hoy;
 
         let clase = "dia";
+
         if (pasado) {
+
             clase += " no-disponible";
+
         } else {
-            clase += " otro-mes"; // Fondo claro para los días de otro mes
-            if (especial) clase += " especial";
+
+            clase += " otro-mes";
+
+            if (especial)
+                clase += " especial";
+
         }
 
-        if (entrada && salida && fechaTexto >= entrada && fechaTexto <= salida) clase += " en-rango";
-        if (fechaTexto === entrada) clase += " entrada";
-        if (fechaTexto === salida) clase += " salida";
+        if (
+            entrada &&
+            salida &&
+            fechaTexto >= entrada &&
+            fechaTexto <= salida
+        )
+            clase += " en-rango";
+
+        if (fechaTexto === entrada)
+            clase += " entrada";
+
+        if (fechaTexto === salida)
+            clase += " salida";
 
         html += `
             <button
@@ -1623,11 +1849,16 @@ function crearCalendario() {
                 ${dia}
             </button>
         `;
+
     }
+
 
     html += `</div>`;
-    calendario.innerHTML = html;
+
+    calendario.innerHTML =
+        html;
 }
+
 
 /* =====================================================
    SELECCIONAR FECHA
@@ -1640,41 +1871,28 @@ function seleccionarFecha(fecha) {
             "fechaEntrada"
         );
 
-
     const salida =
         document.getElementById(
             "fechaSalida"
         );
 
 
-    /*
-       PRIMER CLICK:
-       nueva entrada.
-    */
-
     if (
         !entrada.value ||
         (entrada.value && salida.value)
     ) {
 
-        entrada.value = fecha;
-        salida.value = "";
+        entrada.value =
+            fecha;
 
-        /*
-           Cuando se empieza una nueva reserva
-           eliminamos los días de catering anteriores.
-        */
+        salida.value =
+            "";
 
         preciosCatering = {};
 
     }
 
     else {
-
-        /*
-           Si selecciona una fecha anterior,
-           se convierte en entrada.
-        */
 
         if (fecha < entrada.value) {
 
@@ -1717,7 +1935,6 @@ function actualizarFechas() {
             "fechaEntrada"
         ).value;
 
-
     const salida =
         document.getElementById(
             "fechaSalida"
@@ -1752,7 +1969,6 @@ function actualizarFechas() {
                 entrada + "T12:00:00"
             );
 
-
         const fin =
             new Date(
                 salida + "T12:00:00"
@@ -1777,22 +1993,26 @@ function actualizarFechas() {
 
     document.getElementById(
         "numeroDias"
-    ).textContent = dias;
+    ).textContent =
+        dias;
 
 
     document.getElementById(
         "mostrarDiasPrecio"
-    ).textContent = dias;
+    ).textContent =
+        dias;
+
 
     document.getElementById(
         "resumenDiasFinca"
-    ).textContent = dias;
+    ).textContent =
+        dias;
 
 }
 
 
 /* =====================================================
-   OPCIONES DE CATERING
+   OPCIONES CATERING
    ===================================================== */
 
 function opcionesCatering() {
@@ -1824,11 +2044,12 @@ function opcionesCatering() {
         </option>
 
     `;
+
 }
 
 
 /* =====================================================
-   CREAR DÍAS DE CATERING
+   CREAR DÍAS CATERING
    ===================================================== */
 
 function crearDiasCatering() {
@@ -1839,9 +2060,8 @@ function crearDiasCatering() {
         );
 
 
-    if (!contenedor) {
+    if (!contenedor)
         return;
-    }
 
 
     const entrada =
@@ -1867,6 +2087,7 @@ function crearDiasCatering() {
         `;
 
         return;
+
     }
 
 
@@ -1930,13 +2151,11 @@ function crearDiasCatering() {
                     onchange="cambiarDiaCatering(this)"
                 >
 
-
                 <label
                     for="catering-${fecha}"
                 >
                     ${texto}
                 </label>
-
 
                 <select
                     class="precio-catering-dia"
@@ -1961,15 +2180,13 @@ function crearDiasCatering() {
     }
 
 
-    contenedor.innerHTML = html;
+    contenedor.innerHTML =
+        html;
 
 
-    /*
-       Restaurar los precios después
-       de crear los selectores.
-    */
-
-    Object.keys(preciosCatering).forEach(
+    Object.keys(
+        preciosCatering
+    ).forEach(
         fecha => {
 
             const select =
@@ -1990,6 +2207,7 @@ function crearDiasCatering() {
 
 
     actualizarDetalleCatering();
+
 }
 
 
@@ -2020,18 +2238,14 @@ function cambiarDiaCatering(checkbox) {
         );
 
 
-        select.disabled = false;
+        select.disabled =
+            false;
 
-
-        /*
-           Precio inicial:
-           0 hasta que el cliente seleccione
-           una opción.
-        */
 
         if (!preciosCatering[fecha]) {
 
-            preciosCatering[fecha] = 0;
+            preciosCatering[fecha] =
+                0;
 
         }
 
@@ -2044,12 +2258,14 @@ function cambiarDiaCatering(checkbox) {
         );
 
 
-        select.disabled = true;
+        select.disabled =
+            true;
 
 
         delete preciosCatering[fecha];
 
-        select.value = "0";
+        select.value =
+            "0";
 
     }
 
@@ -2057,11 +2273,12 @@ function cambiarDiaCatering(checkbox) {
     actualizarDetalleCatering();
 
     calcularReserva();
+
 }
 
 
 /* =====================================================
-   CAMBIAR PRECIO DE UN DÍA
+   CAMBIAR PRECIO CATERING
    ===================================================== */
 
 function cambiarPrecioCatering(
@@ -2090,11 +2307,12 @@ function cambiarPrecioCatering(
     actualizarDetalleCatering();
 
     calcularReserva();
+
 }
 
 
 /* =====================================================
-   DETALLE DE CATERING
+   DETALLE CATERING
    ===================================================== */
 
 function actualizarDetalleCatering() {
@@ -2105,9 +2323,8 @@ function actualizarDetalleCatering() {
         );
 
 
-    if (!contenedor) {
+    if (!contenedor)
         return;
-    }
 
 
     const fechas =
@@ -2210,6 +2427,7 @@ function actualizarDetalleCatering() {
 
     contenedor.innerHTML =
         html;
+
 }
 
 
@@ -2236,7 +2454,6 @@ function mostrarCatering() {
         catering.style.display =
             "block";
 
-
         crearDiasCatering();
 
     }
@@ -2246,12 +2463,6 @@ function mostrarCatering() {
         catering.style.display =
             "none";
 
-
-        /*
-           Al desactivar catering,
-           eliminamos todos los servicios.
-        */
-
         preciosCatering = {};
 
         crearDiasCatering();
@@ -2260,6 +2471,7 @@ function mostrarCatering() {
 
 
     calcularReserva();
+
 }
 
 
@@ -2286,9 +2498,7 @@ function calcularReserva() {
     let numeroDias = 0;
 
 
-    /*
-       PRECIO FINCA
-    */
+    /* PRECIO FINCA */
 
     if (entrada) {
 
@@ -2329,9 +2539,7 @@ function calcularReserva() {
     }
 
 
-    /*
-       CATERING INDIVIDUAL
-    */
+    /* CATERING */
 
     let catering = 0;
 
@@ -2369,26 +2577,40 @@ function calcularReserva() {
     }
 
 
-    /*
-       TOTAL
-    */
+    /* TOTALES */
 
     const total =
         precioFinca +
         catering;
 
 
+    const pago40Finca =
+        precioFinca * 0.40;
+
+
+    const pago40Catering =
+        catering * 0.40;
+
+
     const pago40 =
-        total * 0.40;
+        pago40Finca +
+        pago40Catering;
+
+
+    const pago60Finca =
+        precioFinca * 0.60;
+
+
+    const pago60Catering =
+        catering * 0.60;
 
 
     const pago60 =
-        total * 0.60;
+        pago60Finca +
+        pago60Catering;
 
 
-    /*
-       MOSTRAR
-    */
+    /* MOSTRAR FINCA */
 
     document.getElementById(
         "precioFinca"
@@ -2404,6 +2626,8 @@ function calcularReserva() {
         + " €";
 
 
+    /* MOSTRAR CATERING */
+
     document.getElementById(
         "resumenCatering"
     ).textContent =
@@ -2417,10 +2641,28 @@ function calcularReserva() {
         diasCatering;
 
 
+    /* TOTAL */
+
     document.getElementById(
         "total"
     ).textContent =
         total.toFixed(2)
+        + " €";
+
+
+    /* 40 % */
+
+    document.getElementById(
+        "pago40Finca"
+    ).textContent =
+        pago40Finca.toFixed(2)
+        + " €";
+
+
+    document.getElementById(
+        "pago40Catering"
+    ).textContent =
+        pago40Catering.toFixed(2)
         + " €";
 
 
@@ -2431,6 +2673,22 @@ function calcularReserva() {
         + " €";
 
 
+    /* 60 % */
+
+    document.getElementById(
+        "pago60Finca"
+    ).textContent =
+        pago60Finca.toFixed(2)
+        + " €";
+
+
+    document.getElementById(
+        "pago60Catering"
+    ).textContent =
+        pago60Catering.toFixed(2)
+        + " €";
+
+
     document.getElementById(
         "pago60"
     ).textContent =
@@ -2438,9 +2696,7 @@ function calcularReserva() {
         + " €";
 
 
-    /*
-       INFORMACIÓN FECHA
-    */
+    /* INFORMACIÓN FECHA */
 
     let tipo = "—";
 
@@ -2492,6 +2748,7 @@ function calcularReserva() {
 
 
     actualizarDetalleCatering();
+
 }
 
 
@@ -2505,8 +2762,8 @@ function mesAnterior() {
         fechaCalendario.getMonth() - 1
     );
 
-
     crearCalendario();
+
 }
 
 
@@ -2520,8 +2777,8 @@ function mesSiguiente() {
         fechaCalendario.getMonth() + 1
     );
 
-
     crearCalendario();
+
 }
 
 
@@ -2633,11 +2890,7 @@ function solicitarReserva() {
     }
 
 
-    /*
-       Comprobar que todos los días
-       de catering seleccionados
-       tienen precio.
-    */
+    /* COMPROBAR CATERING */
 
     const diasMarcados =
         Array.from(
@@ -2647,7 +2900,9 @@ function solicitarReserva() {
         );
 
 
-    for (const checkbox of diasMarcados) {
+    for (
+        const checkbox of diasMarcados
+    ) {
 
         const fecha =
             checkbox.value;
@@ -2659,9 +2914,9 @@ function solicitarReserva() {
         ) {
 
             alert(
-                "Seleccione el precio del catering para " +
-                fechaLegible(fecha) +
-                "."
+                "Seleccione el precio del catering para "
+                + fechaLegible(fecha)
+                + "."
             );
 
             return;
@@ -2671,17 +2926,98 @@ function solicitarReserva() {
     }
 
 
-    const total =
-        parseFloat(
-            document.getElementById(
-                "total"
-            ).textContent
-            .replace(" €", "")
+    /*
+       CALCULAMOS LOS IMPORTES
+       DIRECTAMENTE PARA EL RESULTADO
+    */
+
+    let precioFinca = 0;
+
+
+    let inicio =
+        new Date(
+            entrada + "T12:00:00"
         );
 
 
+    const fin =
+        new Date(
+            salida + "T12:00:00"
+        );
+
+
+    while (inicio <= fin) {
+
+        const fecha =
+            formatoFecha(inicio);
+
+
+        precioFinca +=
+            obtenerPrecioFinca(
+                fecha
+            );
+
+
+        inicio.setDate(
+            inicio.getDate() + 1
+        );
+
+    }
+
+
+    let catering = 0;
+
+
+    Object.keys(
+        preciosCatering
+    ).forEach(
+        fecha => {
+
+            const precio =
+                parseFloat(
+                    preciosCatering[fecha]
+                ) || 0;
+
+
+            if (precio > 0) {
+
+                catering += precio;
+
+            }
+
+        }
+    );
+
+
+    const total =
+        precioFinca +
+        catering;
+
+
+    const pago40Finca =
+        precioFinca * 0.40;
+
+
+    const pago40Catering =
+        catering * 0.40;
+
+
     const pago40 =
-        total * 0.40;
+        pago40Finca +
+        pago40Catering;
+
+
+    const pago60Finca =
+        precioFinca * 0.60;
+
+
+    const pago60Catering =
+        catering * 0.60;
+
+
+    const pago60 =
+        pago60Finca +
+        pago60Catering;
 
 
     const resultado =
@@ -2690,39 +3026,39 @@ function solicitarReserva() {
         );
 
 
-    /*
-       DETALLE CATERING
-    */
+    /* DETALLE CATERING */
 
     let detalleCatering = "";
 
 
-    Object.keys(preciosCatering)
-        .sort()
-        .forEach(
-            fecha => {
+    Object.keys(
+        preciosCatering
+    )
+    .sort()
+    .forEach(
+        fecha => {
 
-                const precio =
-                    preciosCatering[fecha];
+            const precio =
+                preciosCatering[fecha];
 
 
-                if (precio > 0) {
+            if (precio > 0) {
 
-                    detalleCatering += `
+                detalleCatering += `
 
-                        <p>
-                            ${fechaLegible(fecha)}:
-                            <strong>
-                                ${precio.toFixed(2)} €
-                            </strong>
-                        </p>
+                    <p>
+                        ${fechaLegible(fecha)}:
+                        <strong>
+                            ${precio.toFixed(2)} €
+                        </strong>
+                    </p>
 
-                    `;
-
-                }
+                `;
 
             }
-        );
+
+        }
+    );
 
 
     if (!detalleCatering) {
@@ -2740,11 +3076,11 @@ function solicitarReserva() {
     resultado.innerHTML = `
 
         <h3>
-            Solicitud preparada
+            Finca Santana
         </h3>
 
         <p>
-            Gracias,
+            D./D.ª:
             <strong>${nombre}</strong>.
         </p>
 
@@ -2758,7 +3094,7 @@ function solicitarReserva() {
         <p>
             Salida:
             <strong>
-                ${fechaLegible(salida)}
+                ${fechaLegible(salida, true)}
             </strong>
         </p>
 
@@ -2773,30 +3109,69 @@ function solicitarReserva() {
         <hr>
 
         <p>
-            Precio de la finca:
+            Finca Santana:
             <strong>
-                ${document.getElementById("resumenFinca").textContent}
+                ${precioFinca.toFixed(2)} €
             </strong>
         </p>
 
         <p>
-            Catering:
+            Catering Nicolette Events:
             <strong>
-                ${document.getElementById("resumenCatering").textContent}
+                ${catering.toFixed(2)} €
             </strong>
         </p>
 
         <p>
-            Importe total:
+            IMPORTE TOTAL:
             <strong>
                 ${total.toFixed(2)} €
             </strong>
         </p>
 
+        <hr>
+
         <p>
-            Pago necesario para confirmar:
+            RESERVA Finca Santana — 40 %:
+            <strong>
+                ${pago40Finca.toFixed(2)} €
+            </strong>
+        </p>
+
+        <p>
+            RESERVA Nicolette Events — 40 %:
+            <strong>
+                ${pago40Catering.toFixed(2)} €
+            </strong>
+        </p>
+
+        <p>
+            TOTAL RESERVA — 40 %:
             <strong>
                 ${pago40.toFixed(2)} €
+            </strong>
+        </p>
+
+        <hr>
+
+        <p>
+            Pendiente de pago Finca Santana — 60 %:
+            <strong>
+                ${pago60Finca.toFixed(2)} €
+            </strong>
+        </p>
+
+        <p>
+            Pendiente de pago Nicolette Events — 60 %:
+            <strong>
+                ${pago60Catering.toFixed(2)} €
+            </strong>
+        </p>
+
+        <p>
+            PENDIENTE DE PAGO TOTAL :
+            <strong>
+                ${pago60.toFixed(2)} €
             </strong>
         </p>
 
