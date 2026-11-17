@@ -2814,7 +2814,7 @@ async function solicitarReserva() {
         const respuesta = await fetch(`${API_RESERVAS}/api/crear-pago`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ anticipo: anticipoEuros })
+            body: JSON.stringify(payload)
         });
 
         let datos = {};
