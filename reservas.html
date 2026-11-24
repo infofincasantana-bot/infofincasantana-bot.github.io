@@ -2623,7 +2623,19 @@ function calcularReserva() {
     document.getElementById("pago60Catering").textContent = euros(pendienteCateringCentimos);
     document.getElementById("pago60").textContent = euros(pendienteCentimos);
 
-    document.getElementById("mostrarTipoFecha").textContent = entrada ? obtenerTipoFecha(entrada) : "—";
+    const tiposFecha = new Set();
+if (entrada) {
+    let fecha = new Date(entrada + "T12:00:00");
+    let finTexto = salida || formatoFecha(new Date(fecha.getFullYear(), fecha.getMonth(), fecha.getDate() + 1));
+    const fin = new Date(finTexto + "T12:00:00");
+
+    while (fecha < fin) {
+        tiposFecha.add(obtenerTipoFecha(formatoFecha(fecha)));
+        fecha.setDate(fecha.getDate() + 1);
+    }
+}
+document.getElementById("mostrarTipoFecha").textContent =
+    tiposFecha.size ? [...tiposFecha].join(", ") : "—";
     document.getElementById("mostrarTemporada").textContent = entrada
         ? (salida ? "Según cada noche" : (esTemporadaAlta(entrada) ? "Temporada alta +10 %" : "Temporada normal"))
         : "—";
